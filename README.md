@@ -28,5 +28,5 @@ The program is responsible for:
 
 ## Design Decisions for Optimization
 
-- Strict typing with the use of `byte` over `bool` to implement flags. This ends up saving 7 * the number of cells in the array, which in most cases may span millions.
+- Strict typing with the use of `byte` over `bool` to implement flags. This ends up boosting performance.
 - Use of Murmur3 hash function over the likes of SHA for faster computation (compromised with loose security).

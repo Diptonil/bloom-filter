@@ -14,7 +14,7 @@ var dataset []string
 var datasetReplicated map[string]bool
 var datasetUnique map[string]bool
 
-const SIZE uint32 = 1000
+const SIZE uint32 = 10
 
 type BloomFilter struct {
 	filter []byte
@@ -84,9 +84,16 @@ func init() {
 
 func main() {
 	bloomFilter := NewBloomFilter(SIZE)
-	falsePositives := 0
+	// falsePositives := 0
 
-	GenerateDataset(bloomFilter.size)
-	AddToBloomFilter(bloomFilter)
-	CheckRate(bloomFilter, falsePositives)
+	// GenerateDataset(bloomFilter.size)
+	// AddToBloomFilter(bloomFilter)
+	// CheckRate(bloomFilter, falsePositives)
+
+	keys := []string{"one", "two", "three", "four", "five"}
+	for _, key := range keys {
+		bloomFilter.Add(key)
+	}
+	fmt.Println("For varying runs, we would see varying results of the bits. In case of collisions, we would see less number of 1s than what we would have expected. This leads to false positives.")
+	bloomFilter.ShowFilter()
 }
